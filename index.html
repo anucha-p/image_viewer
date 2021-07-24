@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="dicomImage" style="width:256px;height:256px"></div>
+</body>
+  
+ <script src="https://unpkg.com/cornerstone-core"></script>
+ <script src="https://rawgit.com/chafey/cornerstone/master/example/exampleImageIdLoader.js"></script>
+  <script>
+    const imageId = 'example://1';
+    const element = document.getElementById('dicomImage');
+    cornerstone.enable(element);
+    cornerstone.loadImage(imageId).then(function(image) {
+      cornerstone.displayImage(element, image);
+      cornerstoneTools.mouseInput.enable(element);
+      cornerstoneTools.mouseWheelInput.enable(element);
+      cornerstoneTools.wwwc.activate(element, 1); // Left Click
+      cornerstoneTools.pan.activate(element, 2); // Middle Click
+      cornerstoneTools.zoom.activate(element, 4); // Right Click
+      cornerstoneTools.zoomWheel.activate(element); // Mouse Wheel
+    });
+</script>
+</html>
